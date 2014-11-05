@@ -1,8 +1,7 @@
 FROM ubuntu:14.04
-
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
-## Enable noninteractive mode
+## Enable noninteractive shell
 ENV DEBIAN_FRONTEND noninteractive
 
 ## Install Plex dependencies
@@ -28,4 +27,5 @@ VOLUME /srv/media /var/lib/plexmediaserver
 ## Expose ports
 EXPOSE 32400
 
+## Default command
 CMD ["/run.sh"]
