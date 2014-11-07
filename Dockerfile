@@ -1,18 +1,15 @@
 FROM ubuntu:14.04
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
-## Enable noninteractive shell
-ENV DEBIAN_FRONTEND noninteractive
-
 ## Install Plex dependencies
-RUN apt-get update && apt-get -y upgrade && apt-get -y install avahi-utils
+RUN apt-get update && apt-get -y upgrade \&& apt-get -y install avahi-utils
 
 ## Download and install the Plex Media Server deb
 ADD https://downloads.plex.tv/plex-media-server/0.9.11.1.678-c48ffd2/plexmediaserver_0.9.11.1.678-c48ffd2_amd64.deb /tmp/plexmediaserver.deb
 RUN dpkg -i /tmp/plexmediaserver.deb
 
 ## Increase max file watches
-RUN echo "fs.inotify.max_user_watches = 200000" > /etc/sysctl.d/60-max-file-watches.conf
+ADD file/60-max-file-watches.conf /etc/sysctl.d/60-max-file-watches.conf
 
 ## Perform apt cleanup
 RUN apt-get -y autoremove && apt-get -y clean && apt-get -y autoclean
