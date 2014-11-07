@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 ## Install Plex dependencies
-RUN apt-get update && apt-get -y upgrade \&& apt-get -y install avahi-utils
+RUN apt-get update && apt-get -y upgrade && apt-get -y install avahi-utils
 
 ## Download and install the Plex Media Server deb
 ADD https://downloads.plex.tv/plex-media-server/0.9.11.1.678-c48ffd2/plexmediaserver_0.9.11.1.678-c48ffd2_amd64.deb /tmp/plexmediaserver.deb
