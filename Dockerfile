@@ -9,7 +9,7 @@ ADD https://downloads.plex.tv/plex-media-server/0.9.11.1.678-c48ffd2/plexmediase
 RUN dpkg -i /tmp/plexmediaserver.deb
 
 ## Increase max file watches
-ADD file/60-max-file-watches.conf /etc/sysctl.d/60-max-file-watches.conf
+ADD files/60-max-file-watches.conf /etc/sysctl.d/60-max-file-watches.conf
 
 ## Perform apt cleanup
 RUN apt-get -y autoremove && apt-get -y clean && apt-get -y autoclean
