@@ -1,11 +1,14 @@
 FROM ubuntu:14.04
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
+## Set version
+ENV VERSION 0.9.11.6.800-831ffad
+
 ## Install Plex dependencies
-RUN apt-get update && apt-get -y upgrade && apt-get -y install avahi-utils
+RUN apt-get update && apt-get -y upgrade && apt-get -y install avahi-utils wget
 
 ## Download and install the Plex Media Server deb
-ADD https://downloads.plex.tv/plex-media-server/0.9.11.1.678-c48ffd2/plexmediaserver_0.9.11.1.678-c48ffd2_amd64.deb /tmp/plexmediaserver.deb
+RUN wget https://downloads.plex.tv/plex-media-server/${VERSION}/plexmediaserver_${VERSION}_amd64.deb -O /tmp/plexmediaserver.deb
 RUN dpkg -i /tmp/plexmediaserver.deb
 
 ## Increase max file watches
