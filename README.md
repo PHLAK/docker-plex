@@ -6,7 +6,7 @@ Docker container for Plex Media Server.
 
 ### Running the container
 
-    docker run -d -p 32400:32400 -v /local/dir:/srv/media:ro -v /var/lib/plexmediaserver --name Plex phlak/plex
+    docker run -d -p 32400:32400 -v /local/dir:/srv/media:ro --name Plex phlak/plex
 
 
 -----
