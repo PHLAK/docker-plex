@@ -1,7 +1,7 @@
 docker-transmission
 ===================
 
-Docker container for Plex Media Server.
+Docker image for Plex Media Server.
 
 
 ### Running the container
