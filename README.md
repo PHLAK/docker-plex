@@ -1,17 +1,32 @@
-docker-transmission
-===================
+docker-plex
+===========
 
 Docker image for Plex Media Server.
 
 
 ### Running the container
 
-    docker run -d -p 32400:32400 -v /local/dir:/srv/media:ro --name Plex phlak/plex
+Create a named volume for holding persistant data:
+
+    docker volume create plex-data
+
+Run the Plex server:
+
+    docker run -d -p 32400:32400 -v /local/dir:/srv/media:ro -v plex-data:/var/lib/plexmediaserver --name plex-media-server phlak/plex
+
+**NOTE:** Replace `/local/dir` with the path to your media folder on the host OS to share the media
+with the running container.
+
+
+##### Optional arguments
+`--restart always` - Always restart the container regardless of the exit status. See the Docker
+                     [restart policies](https://goo.gl/OI87rA) for additional details.
+
 
 
 -----
 
-**Copyright (c) 2014 Chris Kankewicz <Chris@ChrisKankiewicz.com>**
+**Copyright (c) 2016 Chris Kankewicz <Chris@ChrisKankiewicz.com>**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

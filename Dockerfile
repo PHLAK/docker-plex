@@ -1,31 +1,36 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
-## Set version
-ENV VERSION 0.9.11.7.803-87d0708
+# Set version
+ENV PLEX_VERSION 1.0.0.2261-a17e99e
 
-## Upgrade packages and install dependencies
+# Set deb URL
+ENV PLEX_DEB_URL https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/plexmediaserver_${PLEX_VERSION}_amd64.deb
+
+# Upgrade packages and install dependencies
 RUN apt-get update && apt-get -y upgrade \
     && apt-get -y install avahi-utils wget \
     && rm -rf /var/lib/apt/lists/*
 
-## Download and install the Plex Media Server deb
-RUN wget https://downloads.plex.tv/plex-media-server/${VERSION}/plexmediaserver_${VERSION}_amd64.deb -O /tmp/plexmediaserver.deb \
-    && dpkg -i /tmp/plexmediaserver.deb \
-    && rm /tmp/plexmediaserver.deb
+# Download and install the Plex Media Server deb
+RUN TEMP_FILE=$(mktemp) && wget ${PLEX_DEB_URL} -O ${TEMP_FILE} \
+    && dpkg -i ${TEMP_FILE} && rm ${TEMP_FILE}
 
-## Increase max file watches
-ADD files/60-max-file-watches.conf /etc/sysctl.d/60-max-file-watches.conf
+# Increase max file watches
+# COPY files/60-max-file-watches.conf /etc/sysctl.d/60-max-file-watches.conf
 
-## Add and chmod the run file
-ADD files/run.sh /run.sh
-RUN chmod +x /run.sh
+# Plex environment variables
+ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
+ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE    3000
+ENV PLEX_MEDIA_SERVER_TMPDIR            /tmp
+ENV PLEX_MEDIA_SERVER_USER              plex
+ENV LD_LIBRARY_PATH                     /usr/lib/plexmediaserver
 
-## Define docker volumes
-VOLUME /srv/media /var/lib/plexmediaserver
+# Define docker volumes
+VOLUME /var/lib/plexmediaserver
 
-## Expose ports
+# Expose ports
 EXPOSE 32400
 
-## Default command
-CMD ["/run.sh"]
+# Default command
+CMD ["/usr/lib/plexmediaserver/Plex Media Server"]
