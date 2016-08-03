@@ -3,6 +3,7 @@ docker-plex
 
 Docker image for Plex Media Server.
 
+[![](https://images.microbadger.com/badges/version/phlak/plex.svg)](http://microbadger.com/#/images/phlak/plex "Get your own version badge on microbadger.com")
 
 ### Running the container
 
