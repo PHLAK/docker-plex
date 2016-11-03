@@ -16,9 +16,6 @@ RUN apt-get update && apt-get -y upgrade \
 RUN TEMP_FILE=$(mktemp) && wget ${PLEX_DEB_URL} -O ${TEMP_FILE} \
     && dpkg -i ${TEMP_FILE} && rm ${TEMP_FILE}
 
-# Increase max file watches
-# COPY files/60-max-file-watches.conf /etc/sysctl.d/60-max-file-watches.conf
-
 # Plex environment variables
 ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
 ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE    3000
