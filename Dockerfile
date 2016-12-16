@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 # Set version
-ENV PLEX_VERSION 1.3.2.3112-1751929
+ENV PLEX_VERSION 1.3.3.3148-b38628e
 
 # Set deb URL
 ENV PLEX_DEB_URL https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/plexmediaserver_${PLEX_VERSION}_amd64.deb
