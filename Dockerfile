@@ -21,7 +21,7 @@ RUN apt-get update && apt-get -y upgrade \
 
 # Download and install the Plex Media Server deb
 RUN TEMP_FILE=$(mktemp) && wget ${PLEX_DEB_URL} -O ${TEMP_FILE} \
-    && dpkg -i ${TEMP_FILE} && rm ${TEMP_FILE}q
+    && dpkg -i ${TEMP_FILE} && rm ${TEMP_FILE}
 
 # Expose ports
 EXPOSE 32400
