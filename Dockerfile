@@ -4,6 +4,13 @@ MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 # Set version
 ENV PLEX_VERSION 1.3.3.3148-b38628e
 
+# Plex environment variables
+ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
+ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE    3000
+ENV PLEX_MEDIA_SERVER_TMPDIR            /tmp
+ENV PLEX_MEDIA_SERVER_USER              plex
+ENV LD_LIBRARY_PATH                     /usr/lib/plexmediaserver
+
 # Set deb URL
 ENV PLEX_DEB_URL https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/plexmediaserver_${PLEX_VERSION}_amd64.deb
 
@@ -14,20 +21,13 @@ RUN apt-get update && apt-get -y upgrade \
 
 # Download and install the Plex Media Server deb
 RUN TEMP_FILE=$(mktemp) && wget ${PLEX_DEB_URL} -O ${TEMP_FILE} \
-    && dpkg -i ${TEMP_FILE} && rm ${TEMP_FILE}
-
-# Plex environment variables
-ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
-ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE    3000
-ENV PLEX_MEDIA_SERVER_TMPDIR            /tmp
-ENV PLEX_MEDIA_SERVER_USER              plex
-ENV LD_LIBRARY_PATH                     /usr/lib/plexmediaserver
-
-# Define docker volumes
-VOLUME /var/lib/plexmediaserver
+    && dpkg -i ${TEMP_FILE} && rm ${TEMP_FILE}q
 
 # Expose ports
 EXPOSE 32400
+
+# Define docker volumes
+VOLUME /var/lib/plexmediaserver
 
 # Default command
 CMD ["/usr/lib/plexmediaserver/Plex Media Server"]
