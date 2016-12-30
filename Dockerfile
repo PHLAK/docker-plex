@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 # Set version
-ENV PLEX_VERSION 1.3.3.3148-b38628e
+ARG PLEX_VERSION=1.3.3.3148-b38628e
 
 # Plex environment variables
 ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
@@ -12,7 +12,7 @@ ENV PLEX_MEDIA_SERVER_USER              plex
 ENV LD_LIBRARY_PATH                     /usr/lib/plexmediaserver
 
 # Set deb URL
-ENV PLEX_DEB_URL https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/plexmediaserver_${PLEX_VERSION}_amd64.deb
+ARG PLEX_DEB_URL=https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/plexmediaserver_${PLEX_VERSION}_amd64.deb
 
 # Upgrade packages and install dependencies
 RUN apt-get update && apt-get -y upgrade \

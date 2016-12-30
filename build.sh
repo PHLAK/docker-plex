@@ -7,7 +7,7 @@ set -o errexit
 SCRIPT_DIR="$(dirname $(readlink -f ${0}))"
 
 IMAGE_NAME="phlak/plex"
-TAG="$(grep 'ENV PLEX_VERSION' Dockerfile | awk '{print $3}')"
+TAG="$(grep 'ARG PLEX_VERSION' Dockerfile | awk -F = '{print $2}')"
 
 ## SCRIPT USAGE
 ########################################
