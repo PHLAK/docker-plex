@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 
 # Set version
-ARG PLEX_VERSION=1.4.3.3433-03e4cfa35
+ARG PLEX_VERSION=1.4.4.3495-edef59192
 
 # Plex environment variables
 ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
