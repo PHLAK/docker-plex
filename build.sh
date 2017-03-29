@@ -17,7 +17,6 @@ function usageShort() {
 }
 
 function usageLong() {
-
     usageShort
 
 	cat <<-EOF
@@ -28,7 +27,6 @@ function usageLong() {
 	        -p, --purge    Purge the image after build
 
 	EOF
-
 }
 
 ## OPTION / PARAMATER PARSING

@@ -6,10 +6,10 @@ ARG PLEX_VERSION=1.4.4.3495-edef59192
 
 # Plex environment variables
 ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
-ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE    3000
-ENV PLEX_MEDIA_SERVER_TMPDIR            /tmp
-ENV PLEX_MEDIA_SERVER_USER              plex
-ENV LD_LIBRARY_PATH                     /usr/lib/plexmediaserver
+ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE 3000
+ENV PLEX_MEDIA_SERVER_TMPDIR /tmp
+ENV PLEX_MEDIA_SERVER_USER plex
+ENV LD_LIBRARY_PATH /usr/lib/plexmediaserver
 
 # Set deb URL
 ARG PLEX_DEB_URL=https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/plexmediaserver_${PLEX_VERSION}_amd64.deb
