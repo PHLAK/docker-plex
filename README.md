@@ -33,6 +33,24 @@ with the running container.
                              state before. See the Docker [restart policies](https://goo.gl/Y0dlDH)
                              for additional details.
 
+### Image versions
+
+When creating your container you may specify a tag to use. For example, if you
+would like to run the current Plex Pass release you would want to use the
+`plex-pass` tag:
+
+    docker run ... phlak/plex:plex-pass
+
+If you don't specify a tag `latest` will be used by default.
+
+##### Available tags
+
+ | Tag       | Description                            |
+ | ----------|--------------------------------------- |
+ | latest    | Latest public release (same as public) |
+ | public    | Latest public release                  |
+ | plex-pass | Current Plex Pass release              |
+
 Troubleshooting
 ---------------
 
