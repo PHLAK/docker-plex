@@ -1,6 +1,10 @@
 docker-plex
 ===========
 
+![Docker Plex](docker-plex.jpg)
+
+-----
+
 Docker image for Plex Media Server.
 
 [![](https://images.microbadger.com/badges/image/phlak/plex.svg)](http://microbadger.com/#/images/phlak/plex "Get your own image badge on microbadger.com")
@@ -37,4 +41,4 @@ Please report bugs to the [GitHub Issue Tracker](https://github.com/PHLAK/docker
 Copyright
 ---------
 
-This project is liscensed under the [MIT License](https://github.com/PHLAK/docker-plex/blob/master/LICENSE).
+This project is liscensed under the [MIT License](https://github.com/PHLAK/docker-plex/blob/public/LICENSE).
