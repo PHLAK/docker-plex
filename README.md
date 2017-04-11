@@ -51,6 +51,9 @@ If you don't specify a tag `latest` will be used by default.
  | public    | Latest public release                  |
  | plex-pass | Current Plex Pass release              |
 
+Eeach release (starting with 1.5.3.3580-4b377d295) is also taged and available
+if you'd like to run a specific version.
+
 Troubleshooting
 ---------------
 
