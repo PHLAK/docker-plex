@@ -63,4 +63,4 @@ Please report bugs to the [GitHub Issue Tracker](https://github.com/PHLAK/docker
 Copyright
 ---------
 
-This project is liscensed under the [MIT License](https://github.com/PHLAK/docker-plex/blob/public/LICENSE).
+This project is licensed under the [MIT License](https://github.com/PHLAK/docker-plex/blob/public/LICENSE).
