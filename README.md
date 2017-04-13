@@ -52,7 +52,8 @@ If you don't specify a tag `latest` will be used by default.
  | plex-pass | Current Plex Pass release              |
 
 Eeach release (starting with 1.5.3.3580-4b377d295) is also taged and available
-if you'd like to run a specific version.
+if you'd like to run a specific version. You can view the complete list of tags
+on Docker Hub at <https://hub.docker.com/r/phlak/plex/tags/>
 
 Troubleshooting
 ---------------
