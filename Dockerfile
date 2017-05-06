@@ -5,8 +5,9 @@ MAINTAINER Chris Kankiewicz <Chris@ChrisKankiewicz.com>
 ARG PLEX_VERSION=1.6.1.3722-4955e31cf
 
 # Plex environment variables
-ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS  6
+ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS 6
 ENV PLEX_MEDIA_SERVER_MAX_STACK_SIZE 3000
+ENV PLEX_MEDIA_SERVER_HOME /usr/lib/plexmediaserver
 ENV PLEX_MEDIA_SERVER_TMPDIR /tmp
 ENV PLEX_MEDIA_SERVER_USER plex
 ENV LD_LIBRARY_PATH /usr/lib/plexmediaserver
@@ -26,8 +27,11 @@ RUN TEMP_FILE=$(mktemp) && wget ${PLEX_DEB_URL} -O ${TEMP_FILE} \
 # Expose ports
 EXPOSE 32400
 
+# Set running user
+USER plex
+
 # Define docker volumes
 VOLUME /var/lib/plexmediaserver
 
 # Default command
-CMD ["/usr/lib/plexmediaserver/Plex Media Server"]
+CMD ["LD_LIBRARY_PATH=/usr/lib/plexmediaserver", "/usr/lib/plexmediaserver/Plex Media Server"]
