@@ -21,15 +21,15 @@ ARG PLEX_DEB_URL=https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/ple
 
 # Upgrade packages and install dependencies
 RUN apt-get update && apt-get -y upgrade \
-    && apt-get -y install avahi-utils wget \
+    && apt-get -y install avahi-utils dbus wget \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install the Plex Media Server deb
 RUN TEMP_FILE=$(mktemp) && wget ${PLEX_DEB_URL} -O ${TEMP_FILE} \
     && dpkg -i ${TEMP_FILE} && rm ${TEMP_FILE}
 
-# Expose ports
-EXPOSE 32400
+# Expose ports, see: https://goo.gl/bV6Krz
+EXPOSE 32400 1900/udp 3005 5353/udp 32410/udp 32412/udp 32413/udp 32414/udp 32469
 
 # Set running user
 USER plex
