@@ -17,7 +17,7 @@ Create a named volume for holding persistant data:
 
 Run the Plex server:
 
-    docker run -d -p 32400:32400 -v /local/dir:/srv/media:ro -v plex-data:/var/lib/plexmediaserver --name plex-media-server phlak/plex
+    docker run -d -p 32400:32400 -v /local/dir:/vol/media:ro -v plex-data:/var/lib/plexmediaserver --name plex-media-server phlak/plex
 
 **NOTE:** Replace `/local/dir` with the path to your media folder on the host OS to share the media
 with the running container.

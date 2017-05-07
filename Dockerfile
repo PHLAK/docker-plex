@@ -13,6 +13,9 @@ ENV PLEX_MEDIA_SERVER_TMPDIR /tmp
 ENV LD_LIBRARY_PATH ${PLEX_MEDIA_SERVER_HOME}
 ENV PLEX_MEDIA_SERVER_INFO_DEVICE docker
 
+# Create media directory
+RUN mkdir -p /vol/media
+
 # Set deb URL
 ARG PLEX_DEB_URL=https://downloads.plex.tv/plex-media-server/${PLEX_VERSION}/plexmediaserver_${PLEX_VERSION}_amd64.deb
 
@@ -32,6 +35,7 @@ EXPOSE 32400
 USER plex
 
 # Define docker volumes
+VOLUME /var/lib/plexmediaserver /vol/media
 
 # Set the working dir
 WORKDIR /var/lib/plexmediaserver
