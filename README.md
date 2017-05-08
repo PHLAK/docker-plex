@@ -1,6 +1,12 @@
 docker-plex
 ===========
 
+**!!! UNMAINTAINED !!!** - I will no longer be maintaing this image and recommend using the
+[official `plexinc/pms-docker` image](https://hub.docker.com/r/plexinc/pms-docker/)
+if you would like to run Plex on Docker.
+
+-----
+
 ![Docker Plex](docker-plex.jpg)
 
 -----
